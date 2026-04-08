@@ -14,13 +14,13 @@ const AllBooks = () => {
             {
                 books.map((book) => {
                     return (
-                        <div className="card bg-base-100 w-96 shadow-sm p-6 space-y-6 border border-[#131313]/15 rounded-2xl">
+                        <div className="card bg-base-100 w-96 shadow-sm p-6 border border-[#131313]/15 rounded-2xl">
                             <figure>
                                 <img
                                     src={book.image}
                                     alt={book.bookName} />
                             </figure>
-                            <div className="card-body p-0 flex flex-col gap-4 pb-2.5 border-b border-dashed border-[#131313]/15">
+                            <div className="card-body p-0 flex flex-col gap-4 pb-2.5 border-b border-dashed border-[#131313]/15 mt-6">
                                 <div className="flex gap-3">
                                     {book.tags.map((tag) => (
                                         <div className="badge badge-soft badge-success">{tag}</div>
@@ -31,7 +31,7 @@ const AllBooks = () => {
                                 </h2>
                                 <p className='font-medium'>By: {book.author}</p>
                             </div>
-                            <div className="flex items-center justify-between">
+                            <div className="flex items-center justify-between mt-2.5">
                                 <p className='font-medium'>{book.category}</p>
                                 <div className="flex items-center gap-1">
                                     <p className='font-medium'>{book.rating}</p>
