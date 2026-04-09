@@ -4,11 +4,12 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import ListedReadList from '../../components/listedBooks/ListedReadList';
 import ListedWishList from '../../components/listedBooks/ListedWishList';
+import { IoIosArrowDown } from 'react-icons/io';
 
 
 const books = () => {
 
-    const { storedBooks, wishList } = useContext(BookContext);
+    const { readList, wishList } = useContext(BookContext);
 
     return (
         <div className='container mx-auto px-5 lg:px-0 flex flex-col gap-14'>
@@ -17,7 +18,7 @@ const books = () => {
                     <h1 className='text-3xl font-bold py-8'>Books</h1>
                 </div>
                 <div className="">
-                    <div className="btn">Sort By</div>
+                    <div className="btn btn-success text-white">Sort By <IoIosArrowDown /></div>
                 </div>
             </div>
             <div className="">
@@ -28,7 +29,7 @@ const books = () => {
                     </TabList>
 
                     <TabPanel>
-                        <ListedReadList storedBooks={storedBooks} />
+                        <ListedReadList readList={readList} />
                     </TabPanel>
                     <TabPanel>
                         <ListedWishList wishList={wishList} />
