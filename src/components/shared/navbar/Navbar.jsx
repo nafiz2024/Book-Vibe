@@ -14,6 +14,12 @@ const Navbar = () => {
             <li>
                 <NavLink to={"/pages-to-read"} className={({ isActive }) => isActive ? "text-[#23BE0A] border border-[#23BE0A] bg-transparent" : "hover:text-[#23BE0A] hover:border hover:border-[#23BE0A] hover:bg-transparent"}>Pages to Read</NavLink>
             </li>
+            <li>
+                <NavLink to={""} className={""}>Sign In</NavLink>
+            </li>
+            <li>
+                <NavLink to={""} className={""}>Sign Up</NavLink>
+            </li>
         </>
     );
 
@@ -31,14 +37,14 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <a className="text-3xl font-bold">Book Vibe</a>
+                    <a className="text-2xl lg:text-3xl font-bold">Book Vibe</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 text-lg space-x-5">
                         {links}
                     </ul>
                 </div>
-                <div className="navbar-end space-x-4">
+                <div className="navbar-end space-x-4 hidden lg:block">
                     <a className="btn bg-[#23BE0A] text-white text-lg font-semibold px-5 py-7 rounded-lg hover:bg-transparent hover:text-[#23BE0A] hover:border hover:border-[#23BE0A]">Sign In</a>
                     <a className="btn bg-[#59C6D2] text-white text-lg font-semibold px-5 py-7 rounded-lg hover:bg-transparent hover:text-[#59C6D2] hover:border hover:border-[#59C6D2]">Sign Up</a>
                 </div>
