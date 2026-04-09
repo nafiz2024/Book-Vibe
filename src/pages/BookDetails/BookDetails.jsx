@@ -19,7 +19,7 @@ const BookDetails = () => {
                     <img
                         src={expectedBook?.image}
                         alt="Movie"
-                        className='rounded-2xl h-[400px]' />
+                        className='rounded-2xl h-[400px] py-5' />
                 </figure>
                 <div className="card-body flex flex-col gap-6 h-full">
                     <div className="flex flex-col gap-4">
