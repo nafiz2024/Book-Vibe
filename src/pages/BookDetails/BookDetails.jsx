@@ -11,7 +11,7 @@ const BookDetails = () => {
 
     const expectedBook = books.find((book) => book.bookId == bookId);
 
-    const { handleReadButton, storedBooks } = useContext(BookContext);
+    const { handleReadButton, handleWishListButton } = useContext(BookContext);
 
     return (
         <div className='container mx-auto min-h-screen'>
@@ -61,7 +61,7 @@ const BookDetails = () => {
                     </div>
                     <div className="card-actions flex gap-4">
                         <button className="btn py-5 px-7 text-lg font-bold border border-[#131313]/30 bg-transparent hover:text-[#50B1C9] hover:border-[#50B1C9]" onClick={() => handleReadButton(expectedBook)}>Read</button>
-                        <button className="btn py-5 px-7 text-lg font-bold bg-[#50B1C9] text-white hover:bg-transparent hover:text-[#50B1C9] hover:border-[#50B1C9]" onClick={() => handleWishlistButton(expectedBook?.bookId)}>Wishlist</button>
+                        <button className="btn py-5 px-7 text-lg font-bold bg-[#50B1C9] text-white hover:bg-transparent hover:text-[#50B1C9] hover:border-[#50B1C9]" onClick={() => handleWishListButton(expectedBook)}>Wishlist</button>
                     </div>
                 </div>
             </div>
