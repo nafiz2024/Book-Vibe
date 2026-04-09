@@ -1,11 +1,32 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { HiOutlineUsers } from 'react-icons/hi';
 import { IoDocumentTextOutline, IoLocationOutline } from 'react-icons/io5';
+import { BookContext } from '../../context/BookContext';
 
 
-const ListedWishList = ({ wishList }) => {
+const ListedWishList = ({ sortingType }) => {
 
-    if (wishList.length === 0) {
+    const { wishList } = useContext(BookContext);
+
+    const [filteredWishList, setFilteredWishList] = useState(wishList);
+    
+        useEffect(() => {
+            if (sortingType) {
+                if (sortingType === "pages") {
+                    const sortedData = [...wishList].sort(
+                        (a, b) => a.totalPages - b.totalPages,
+                    )
+                    setFilteredWishList(sortedData);
+                } else if (sortingType === "rating") {
+                    const sortedData = [...wishList].sort(
+                        (a, b) => b.rating - a.rating,
+                    )
+                    setFilteredWishList(sortedData);
+                }
+            }
+        }, [sortingType, wishList]);
+
+    if (filteredWishList.length === 0) {
         return (
             <div className='flex flex-col items-center justify-center gap-4 py-20 bg-[#131313]/5 rounded-2xl mt-12'>     
                 <h2 className='text-2xl font-bold'>No books to display</h2>
@@ -17,7 +38,7 @@ const ListedWishList = ({ wishList }) => {
     return (
         <div>
              <div className="">
-                {wishList.map((book) => (
+                {filteredWishList.map((book) => (
                     <div key={book.id}>
                         <div className="flex items-center gap-6 p-6 border border-[#131313]/15 rounded-2xl mt-8">
                             <figure className='w-[230px] py-7 px-12 bg-[#131313]/5 rounded-2xl'>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, {useState } from 'react';
 import { BookContext } from '../../context/BookContext';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -7,9 +7,9 @@ import ListedWishList from '../../components/listedBooks/ListedWishList';
 import { IoIosArrowDown } from 'react-icons/io';
 
 
-const books = () => {
+const Books = () => {
 
-    const { readList, wishList } = useContext(BookContext);
+    const [sortingType, setSortingType] = useState("");
 
     return (
         <div className='container mx-auto px-5 lg:px-0 flex flex-col gap-14'>
@@ -18,7 +18,13 @@ const books = () => {
                     <h1 className='text-3xl font-bold py-8'>Books</h1>
                 </div>
                 <div className="">
-                    <div className="btn btn-success text-white">Sort By <IoIosArrowDown /></div>
+                    <div className="dropdown dropdown-center">
+                        <div tabIndex={0} role="button" className="btn btn-success text-white">Sort By : {sortingType || "Default"} <IoIosArrowDown /></div>
+                        <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                            <li onClick={() => setSortingType("pages")}><a>Pages</a></li>
+                            <li onClick={() => setSortingType("rating")}><a>Rating</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div className="">
@@ -29,10 +35,10 @@ const books = () => {
                     </TabList>
 
                     <TabPanel>
-                        <ListedReadList readList={readList} />
+                        <ListedReadList sortingType={sortingType} />
                     </TabPanel>
                     <TabPanel>
-                        <ListedWishList wishList={wishList} />
+                        <ListedWishList sortingType={sortingType} />
                     </TabPanel>
                 </Tabs>
             </div>
@@ -40,4 +46,4 @@ const books = () => {
     );
 };
 
-export default books;
+export default Books;
