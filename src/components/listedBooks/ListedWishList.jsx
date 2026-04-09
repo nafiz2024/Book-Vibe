@@ -9,26 +9,26 @@ const ListedWishList = ({ sortingType }) => {
     const { wishList } = useContext(BookContext);
 
     const [filteredWishList, setFilteredWishList] = useState(wishList);
-    
-        useEffect(() => {
-            if (sortingType) {
-                if (sortingType === "pages") {
-                    const sortedData = [...wishList].sort(
-                        (a, b) => a.totalPages - b.totalPages,
-                    )
-                    setFilteredWishList(sortedData);
-                } else if (sortingType === "rating") {
-                    const sortedData = [...wishList].sort(
-                        (a, b) => b.rating - a.rating,
-                    )
-                    setFilteredWishList(sortedData);
-                }
+
+    useEffect(() => {
+        if (sortingType) {
+            if (sortingType === "pages") {
+                const sortedData = [...wishList].sort(
+                    (a, b) => a.totalPages - b.totalPages,
+                )
+                setFilteredWishList(sortedData);
+            } else if (sortingType === "rating") {
+                const sortedData = [...wishList].sort(
+                    (a, b) => b.rating - a.rating,
+                )
+                setFilteredWishList(sortedData);
             }
-        }, [sortingType, wishList]);
+        }
+    }, [sortingType, wishList]);
 
     if (filteredWishList.length === 0) {
         return (
-            <div className='flex flex-col items-center justify-center gap-4 py-20 bg-[#131313]/5 rounded-2xl mt-12'>     
+            <div className='flex flex-col items-center justify-center gap-4 py-20 bg-[#131313]/5 rounded-2xl mt-12'>
                 <h2 className='text-2xl font-bold'>No books to display</h2>
                 <p className='text-gray-500'>You haven't wishlisted any books yet.</p>
             </div>
@@ -37,10 +37,10 @@ const ListedWishList = ({ sortingType }) => {
 
     return (
         <div>
-             <div className="">
+            <div className="">
                 {filteredWishList.map((book) => (
                     <div key={book.id}>
-                        <div className="flex items-center gap-6 p-6 border border-[#131313]/15 rounded-2xl mt-8">
+                        <div className="flex flex-col lg:flex-row items-center gap-6 p-6 border border-[#131313]/15 rounded-2xl mt-8">
                             <figure className='w-[230px] py-7 px-12 bg-[#131313]/5 rounded-2xl'>
                                 <img
                                     src={book.image}
@@ -50,16 +50,18 @@ const ListedWishList = ({ sortingType }) => {
                             <div className="flex flex-col gap-4 w-full">
                                 <h1 className="text-2xl font-bold">{book.bookName}</h1>
                                 <p className="text-gray-500 text-lg font-medium">By : {book.author}</p>
-                                <div className="flex items-center gap-4">
-                                    <div className="">
-                                        <p className='font-bold'>Tag</p>
-                                    </div>
-                                    <div className="">
-                                        <p>
-                                            {book?.tags.map((tag) => (
-                                                <div className="badge badge-soft badge-success">{tag}</div>
-                                            ))}
-                                        </p>
+                                <div className="flex flex-col lg:flex-row lg:items-center gap-4">
+                                    <div className="flex items-center gap-4">
+                                        <div className="">
+                                            <p className='font-bold'>Tag</p>
+                                        </div>
+                                        <div className="">
+                                            <p>
+                                                {book?.tags.map((tag) => (
+                                                    <div className="badge badge-soft badge-success">{tag}</div>
+                                                ))}
+                                            </p>
+                                        </div>
                                     </div>
                                     <div className="">
                                         <p className='flex items-center gap-2'>
@@ -78,7 +80,7 @@ const ListedWishList = ({ sortingType }) => {
                                         Page: {book.totalPages}
                                     </p>
                                 </div>
-                                <div className="flex items-center gap-4">
+                                <div className="flex flex-col lg:flex-row text-center lg:items-center gap-4">
                                     <div className="py-1.5 px-3 text-[#328EFF] bg-[#328EFF]/15 rounded-full">Category: {book.category}</div>
                                     <div className="py-1.5 px-3 text-[#FFAC33] bg-[#FFAC33]/15 rounded-full">Rating: {book.rating}</div>
                                     <button className="py-1.5 px-3 text-white bg-[#23BE0A] hover:bg-transparent hover:text-[#23BE0A] hover:border hover:border-[#23BE0A] rounded-full">Success</button>
