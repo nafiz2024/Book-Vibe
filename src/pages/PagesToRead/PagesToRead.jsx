@@ -21,7 +21,6 @@ const PagesToRead = () => {
     pages: book.totalPages
   }));
 
-  // colors (auto repeat)
   const colors = [
     "#0088FE",
     "#00C49F",
@@ -35,7 +34,7 @@ const PagesToRead = () => {
     "#F97316"
   ];
 
-  // pyramid shape
+
   const getPath = (x, y, width, height) => {
     return `M${x},${y + height}
       C${x + width / 3},${y + height}
@@ -64,7 +63,6 @@ const PagesToRead = () => {
 
     <div className="container mx-auto mt-10">
 
-      {/* background */}
       <div className="w-full h-[80vh] bg-gray-100 rounded-2xl p-6">
 
         <ResponsiveContainer width="100%" height="100%">
@@ -79,10 +77,8 @@ const PagesToRead = () => {
             }}
           >
 
-            {/* grid */}
             <CartesianGrid strokeDasharray="3 3" />
 
-            {/* X axis */}
             <XAxis
               dataKey="name"
               interval={0}
@@ -90,19 +86,17 @@ const PagesToRead = () => {
               textAnchor="end"
             />
 
-            {/* Y axis */}
             <YAxis />
 
-            {/* pyramid bars */}
             <Bar dataKey="pages" shape={<TriangleBar />}>
 
-              {/* number on top */}
+
               <LabelList
                 dataKey="pages"
                 position="top"
               />
 
-              {/* dynamic colors */}
+
               {
                 data.map((entry, index) => (
                   <Cell
