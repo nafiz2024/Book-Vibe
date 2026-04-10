@@ -144,6 +144,10 @@ Book-Vibe
 
 <img src="./src/assets/ReadList.png">
 
+### Page To Read
+
+<img src="./src/assets/PageToRead.png">
+
 ---
 
 ## 🔮 Future Improvements
