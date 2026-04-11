@@ -56,7 +56,7 @@ const ListedWishList = ({ sortingType }) => {
                                             <p className='font-bold'>Tag</p>
                                         </div>
                                         <div className="">
-                                            <p>
+                                            <p className='space-x-3'>
                                                 {book?.tags.map((tag) => (
                                                     <div className="badge badge-soft badge-success">{tag}</div>
                                                 ))}
